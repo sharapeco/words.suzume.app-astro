@@ -2,7 +2,7 @@
 
 ## これは？
 
-[Airtable](https://www.airtable.com/) をデータソースにして静的サイトを作成するテスト。
+[Airtable](https://www.airtable.com/) をデータソースにして[静的サイト](https://words.suzume.app/)を作成するテスト。
 
 最近 [Astro](https://astro.build/) で書き直した。
 
