@@ -1,0 +1,214 @@
+---
+export interface Props {
+	title: string;
+	creationDate?: string;
+}
+
+const { title, creationDate } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		{creationDate && (
+			<meta name="creation_date" content={creationDate} />
+		)}
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+
+		<script async src="https://webfont.fontplus.jp/accessor/script/fontplus.js?MRlT4X70yn0%3D&amp;box=L29zNGvvtqo%3D&amp;chws=1&amp;aa=1&amp;ab=2"></script>
+	</body>
+</html>
+
+<style is:global>
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		font-size: inherit;
+	}
+
+	body {
+		padding: 1rem;
+		font-family: TsukuMinPr6N-RB, serif;
+		line-height: 1.5;
+		color: #392f2d;
+		background: #f3f3f3;
+	}
+
+	@media (min-width: 25rem) {
+		body {
+			padding: 2rem;
+		}
+	}
+
+	a {
+		color: #77692c;
+		text-decoration: none;
+	}
+
+	a:hover,
+	a:focus-visible {
+		text-decoration: underline;
+	}
+</style>
+
+<style is:global>
+	.site-title {
+		max-width: 40rem;
+		margin: 1rem auto 3rem;
+		font-family: TsukuCOldMinPr6N-D, serif;
+		font-size: 250%;
+		font-weight: 500;
+	}
+
+	@media (min-width: 54rem) {
+		.site-title {
+			position: fixed;
+			display: flex;
+			top: 2rem;
+			bottom: 2rem;
+			right: calc(50% + 24rem);
+			margin: 3rem 0;
+			writing-mode: vertical-rl;
+			letter-spacing: 0.25em;
+		}
+	}
+
+	.toc-wrap {
+		max-width: 40rem;
+		margin: 0 auto;
+	}
+
+	.toc-section {
+		margin: 0 0 3rem;
+	}
+
+	.toc-header {
+		float: left;
+		font-family: DNPShuei4goBStd-Hv, sans-serif;
+		font-weight: 700;
+		opacity: 0.7;
+	}
+
+	.toc-list {
+		margin: 1rem 0 1rem 1rem;
+		list-style: none;
+	}
+
+	.toc-list > li {
+		display: inline-block;
+		margin: 0 0 0.5rem;
+		padding-left: 1em;
+	}
+</style>
+
+<style is:global>
+	.container {
+		max-width: 40rem;
+		margin: 0 auto;
+	}
+
+	.nav {
+		margin: 0 0 2rem;
+		font-family: DNPShuei4goBStd-Hv, sans-serif;
+		font-weight: 700;
+	}
+
+	@media (min-width: 54rem) {
+		.nav {
+			position: fixed;
+			display: flex;
+			top: 2rem;
+			bottom: 2rem;
+			right: calc(50% + 24rem);
+			margin: 3rem 0;
+			font-family: TsukuCOldMinPr6N-D, serif;
+			font-size: 250%;
+			font-weight: 500;
+			writing-mode: vertical-rl;
+			letter-spacing: 0.25em;
+		}
+		.nav a:hover,
+		.nav a:focus-visible {
+			text-decoration: none !important;
+			opacity: 0.7;
+		}
+	}
+
+	.word-header {
+		margin: 1rem 0 1.5rem;
+		font-feature-settings: "palt";
+	}
+
+	.word-name {
+		margin: 0.5rem 0 0.25rem;
+		font-size: 200%;
+		font-weight: 700;
+		line-height: 1.2;
+	}
+
+	.word-kana {
+		opacity: 0.7;
+		letter-spacing: 0.1em;
+	}
+
+	.word-content {
+		line-height: 2;
+		font-feature-settings: "chws";
+	}
+
+	@media (min-width: 32rem) {
+		.word-content {
+			font-size: 112.5%;
+		}
+	}
+
+	@media (min-width: 44rem) {
+		.word-content {
+			font-size: 125%;
+		}
+	}
+
+	.word-footer {
+		margin: 3rem 0 0;
+		font-size: 80%;
+	}
+
+	.word-source {
+		margin-bottom: 0.5rem;
+	}
+
+	.word-date {
+		opacity: 0.7;
+	}
+
+	.pager {
+		margin: 2rem 0 0;
+		padding: 1.5rem 0 0;
+		font-size: 80%;
+		border-top: solid 1px #ddd;
+		vertical-align: center;
+	}
+
+	.pager .previous {
+		float: left;
+		margin-right: 1rem;
+	}
+
+	.pager .next {
+		float: right;
+		margin-left: 1rem;
+		text-align: right;
+	}
+
+	.pager a {
+		padding: 0.5rem 0;
+	}
+</style>

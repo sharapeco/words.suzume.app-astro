@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { fetchWords } from "../lib/airtable";
+import { chunkAbc } from "../lib/chunk-abc";
+import { getWordLink } from "../lib/word-utils";
+
+const words = await fetchWords();
+const wordChunks = chunkAbc(words);
+---
+
+<Layout title="ない言葉">
+	<h1 class="site-title">ない言葉</h1>
+
+	<div class="toc-wrap">
+		{wordChunks.map((chunk) => (
+			<section class="toc-section">
+				<h2 class="toc-header">{chunk.initial}</h2>
+				<ul class="toc-list">
+					{chunk.items.map((word) => (
+						<li>
+							<a href={getWordLink(word)}>{word.Name}</a>
+						</li>
+					))}
+				</ul>
+			</section>
+		))}
+	</div>
+</Layout>

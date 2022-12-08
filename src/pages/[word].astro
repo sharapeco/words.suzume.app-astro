@@ -1,0 +1,78 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { DateTime } from "luxon";
+import { fetchWords } from "../lib/airtable";
+import { getWordLink, sanitizeWord } from "../lib/word-utils";
+import type { Word } from "../types/word";
+
+export async function getStaticPaths() {
+	const words = await fetchWords();
+
+	return words.map((word, index) => ({
+		params: { word: sanitizeWord(word.Name) },
+		props: {
+			word,
+			previous: words[index - 1],
+			next: words[index + 1],
+		},
+	}));
+}
+
+const { word, previous, next } = Astro.props as {
+	word: Word;
+	previous?: Word;
+	next?: Word;
+};
+const { Date, Name, Kana, Source, Notes } = word;
+const formatDate = (dateStr: string): string => {
+	return DateTime.fromISO(dateStr).setZone("Asia/Tokyo").toFormat("yyyy年M月d日 H:mm") + " JST";
+};
+---
+
+<Layout title={Name}>
+	<div class="container">
+		<nav class="nav">
+			<a href="/">ない言葉</a>
+		</nav>
+		<article class="word">
+			<header class="word-header">
+				<h1 class="word-name">{Name}</h1>
+				<p class="word-kana">{Kana}</p>
+			</header>
+			<p class="word-content">
+				{Notes}
+			</p>
+			<footer class="word-footer">
+				{
+					Source && (
+						<p class="word-source">
+							初出:{" "}
+							<a href={Source} target="_blank">
+								{Source}
+							</a>
+						</p>
+					)
+				}
+				<p class="word-date">
+					<time date-time={Date}>{formatDate(Date)}</time>
+				</p>
+			</footer>
+		</article>
+		<nav class="pager">
+			{
+				previous && (
+					<div class="previous">
+						← <a href={getWordLink(previous)}>{previous.Name}</a>
+					</div>
+				)
+			}
+			{
+				next && (
+					<div class="next">
+						<a href={getWordLink(next)}>{next.Name}</a> →
+					</div>
+				)
+			}
+		</nav>
+	</div>
+</Layout>

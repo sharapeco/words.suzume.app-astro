@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 36 36">
+  <g transform="matrix(1.1334,0,0,1.1334,-2.40615,-2.9416)">
+    <rect fill="#000" x="3.074" y="8.129" width="29.926" height="2.904" />
+  </g>
+  <g transform="matrix(1.79215e-17,0.292681,-1.21693,7.45154e-17,29.5338,-0.899628)">
+    <rect fill="#000" x="3.074" y="8.129" width="29.926" height="2.904" />
+  </g>
+  <g transform="matrix(-0.870345,0.870345,-0.860499,-0.860499,39.792,14.251)">
+    <rect fill="#000" x="3.074" y="8.129" width="29.926" height="2.904" />
+  </g>
+  <g transform="matrix(-0.870345,-0.870345,0.860499,-0.860499,26.515,45.6474)">
+    <rect fill="#000" x="3.074" y="8.129" width="29.926" height="2.904" />
+  </g>
+  <style>
+    @media (prefers-color-scheme:dark){:root{filter:invert(100%)}}
+</style>
+</svg>
